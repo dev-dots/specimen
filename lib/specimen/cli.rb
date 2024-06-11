@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'specimen'
-require 'specimen/cli/specimen_command'
+require 'specimen/cli/default_command'
 
 module Specimen
   module CLI
@@ -13,7 +13,7 @@ module Specimen
         when '--version', '-v'
           show_version
         else
-          SpecimenCommands.start(ARGV.dup)
+          DefaultCommand.start(ARGV.dup)
         end
       end
 

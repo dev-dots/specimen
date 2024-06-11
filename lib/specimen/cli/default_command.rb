@@ -4,7 +4,7 @@ require 'specimen/generator'
 
 module Specimen
   module CLI
-    class SpecimenCommands < Commands::BaseCommand
+    class DefaultCommand < Commands::BaseCommand
       include Generator
 
       namespace :default
@@ -30,7 +30,7 @@ module Specimen
       desc 'commands', 'print all commands'
 
       def commands
-        [SpecimenCommands].each { |cmd| cmd.new.help }
+        [DefaultCommand].each { |cmd| cmd.new.help }
       end
     end
   end
