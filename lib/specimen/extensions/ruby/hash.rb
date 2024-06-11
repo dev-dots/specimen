@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Copied without any regrets from activesupport or rails :) to make the 'deep_symbolize_keys' methods available
 class Hash
   # Returns a new hash with all keys converted to strings.
   #
