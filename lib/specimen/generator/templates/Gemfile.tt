@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+<% data[:gems].sort.each do |gem| -%>
+<% if gem == 'debug' || gem == 'pry' -%>
+gem '<%= gem %>', require: false
+<% else -%>
+gem '<%= gem %>'
+<% end -%>
+<% end -%>
