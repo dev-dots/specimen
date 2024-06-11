@@ -1,6 +1,11 @@
 *.idea/
 
+/.bundle
+tmp/
+
 Gemfile.lock
 *.gem
 
-tmp/
+.ruby-version
+.rbenv-gemsets
+.gemrc
