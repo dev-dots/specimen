@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 version = File.read(File.expand_path('VERSION', __dir__)).strip
+homepage = 'https://github.com/dev-dots/specimen'
 
 Gem::Specification.new do |s|
   s.name = 'specimen'
@@ -9,14 +10,16 @@ Gem::Specification.new do |s|
   s.description = 'Create maintainable automated tests using Rails-like COC approach'
   s.authors = ['Marek Witkowski']
   s.email = 'info@marekwitkowski.de'
-  s.homepage = 'https://github.com/dev-dots/specimen'
+  s.homepage = homepage
   s.license = 'MIT'
 
   s.required_ruby_version = '>= 3.0'
   s.required_rubygems_version = '>= 3.0.1'
 
   s.metadata = {
-    'bug_tracker_uri' => 'https://github.com/dev-dots/specimen/issues',
+    'bug_tracker_uri' => "#{homepage}/issues",
+    'hompage_uri' => homepage,
+    'source_code_uri' => homepage,
     'rubygems_mfa_required' => 'true'
   }
 
