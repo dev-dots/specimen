@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-version = File.read(File.expand_path("VERSION", __dir__)).strip
+version = File.read(File.expand_path('VERSION', __dir__)).strip
 
 Gem::Specification.new do |s|
   s.name = 'specimen'
@@ -23,11 +23,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '~> 7.1'
   s.add_dependency 'thor', '~> 1.3'
 
+  # rubocop:disable Gemspec/DevelopmentDependencies
   s.add_development_dependency 'pry', '~> 0.14.2'
   s.add_development_dependency 'rake', '~> 13.2.1'
   s.add_development_dependency 'rubocop', '~> 1.64.1'
+  # rubocop:enable Gemspec/DevelopmentDependencies
 
-  s.files = Dir["*.md", "bin/*", "lib/**/*.rb", "VERSION", "lib/**/*.tt"]
+  s.files = Dir['*.md', 'bin/*', 'lib/**/*.rb', 'VERSION', 'lib/**/*.tt']
   s.require_path = 'lib'
   s.executables = ['specimen']
 end
