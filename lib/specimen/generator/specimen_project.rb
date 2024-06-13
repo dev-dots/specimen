@@ -51,21 +51,18 @@ module Specimen
 
         def create_root_files
           project_root_files.each do |file|
-            dest = dot_files.include?(file) ? ".#{file}" : file
-            create_file_by_template(file, "#{@config.project_root}/#{dest}", @config.data)
+            source = file.start_with?('.') ? file.delete_prefix('.') : file
+            create_file_by_template(source, "#{@config.project_root}/#{file}", @config.data)
           end
         end
 
-        def dot_files
-          %w[gemrc rbenv-gemsets rubocop.yml]
-        end
-
         def project_root_files
-          %w[gemrc
-             rbenv-gemsets
-             rubocop.yml
+          %w[.gemrc
+             .rbenv-gemsets
+             .rubocop.yml
              Gemfile
-             README.md]
+             README.md
+             specimen.yml]
         end
       end
     end
