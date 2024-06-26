@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.homepage = homepage
   s.license = 'MIT'
 
-  s.required_ruby_version = '>= 3.0'
+  s.required_ruby_version = '>= 3.1'
   s.required_rubygems_version = '>= 3.0.1'
 
   s.metadata = {
@@ -25,8 +25,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'activesupport', '~> 7.1'
   s.add_dependency 'thor', '~> 1.3'
+  s.add_dependency 'dotenv'
+  s.add_dependency 'colorize'
 
   # rubocop:disable Gemspec/DevelopmentDependencies
+  s.add_development_dependency 'cucumber'
+  s.add_development_dependency 'rspec'
   s.add_development_dependency 'pry', '~> 0.14.2'
   s.add_development_dependency 'rake', '~> 13.2.1'
   s.add_development_dependency 'rubocop', '~> 1.64.1'
