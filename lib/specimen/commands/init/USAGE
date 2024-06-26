@@ -1,0 +1,15 @@
+Usage:
+  specimen init --name=NAME [options]
+
+Options:
+  -n, --name=NAME
+      [--skip-cucumber]
+                                                        # Default: false
+      [--skip-rspec]
+                                                        # Default: false
+      [--api-only], [--no-api-only], [--skip-api-only]
+                                                        # Default: false
+      [--ui-driver=UI_DRIVER]
+                                                        # Default: watir
+      [--skip-watir]
+                                                        # Default: false

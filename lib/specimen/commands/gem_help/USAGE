@@ -1,0 +1,9 @@
+Usage:
+  specimen COMMAND [options]
+
+You must specify a command:
+
+  init         Initialize a new specimen project
+  exec         Run tests with specimen
+
+All commands can be run with -h (or --help) for more information.
