@@ -1,0 +1,34 @@
+default: &default
+  framework: cucumber
+  threads: 1
+  env:
+    - BAR: foo
+
+cucumber: &cucumber
+  profiles: []
+  options:
+    - --publish-quiet
+    - --format pretty
+    - --format html --out tmp/cucumber_result.html
+  env:
+    - BAZ: boz
+
+rspec: &rspec
+  options:
+    - --options .rspec
+    - --format progress
+    - --format documentation
+    - --format html --out tmp/rspec_result.html
+  env:
+    - BAZ: boz
+
+custom_profile:
+  threads: 2
+  env:
+    - CI: 1
+    - BAZ: boz
+    - MY_SECRET: <%= ENV.fetch('MY_SECRET', 'secret') %>
+  my_list:
+    - lorem
+    - ipsum
+  something: foo

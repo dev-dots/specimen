@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+RSpec.describe 'Example specs' do
+  context 'run example tests' do
+    before(:example) do
+      @foo = '123'
+    end
+
+    it 'passes' do
+      expect(@foo).to eq '123'
+    end
+  end
+end
