@@ -1,0 +1,9 @@
+Feature: Add numbers example feature
+
+  Scenario:
+    Given I add 1 and 1
+    Then the result should be 2
+
+  Scenario:
+    Given I add 1 and 3
+    Then the result should be 3
