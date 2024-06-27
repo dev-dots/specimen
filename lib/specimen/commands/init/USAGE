@@ -1,15 +1,38 @@
 Usage:
-  specimen init --name=NAME [options]
+  specimen init --name=NAME [options]   # Create a new specimen project which will generate following dirs and files
+
+                                          * default directories /config, /lib, /tmp
+                                          * default directories (/features/..) and files for cucumber unless --skip-cucumber
+                                          * default directories (/spec/..) and files for RSpec unless --skip-rspec
+                                          * root path files:
+                                            * .gemrc
+                                            * .gitignore
+                                            * .rspec (unless --skip-rspec)
+                                            * .rubocop.yml
+                                            * cucumber.yml (unless --skip-cucumber)
+                                            * Gemfile (based on the used options)
+                                            * README.md
+                                            * specimen.yml (default configuration file for the specimen gem
 
 Options:
-  -n, --name=NAME
-      [--skip-cucumber]
-                                                        # Default: false
-      [--skip-rspec]
-                                                        # Default: false
-      [--api-only], [--no-api-only], [--skip-api-only]
-                                                        # Default: false
-      [--ui-driver=UI_DRIVER]
-                                                        # Default: watir
-      [--skip-watir]
-                                                        # Default: false
+  -n, [--name=NAME]                     # required: true
+                                          The name of your project and installation path relative to your current PWD
+
+      [--ui-driver=UI_DRIVER]           # Default: 'watir'
+                                          Valid options are:
+                                            * watir
+                                            * selenium
+                                            * selenium-webdriver
+
+      [--skip-ui]                       # Default: false
+                                          Don´t add selenium or watir gem to your Gemfile
+
+      [--skip-cucumber]                 # Default: false
+                                          No cucumber gems will be added to your Gemfile.
+                                          Creation of cucumber directories and files will be skipped.
+
+      [--skip-rspec]                    # Default: false
+                                          RSpec will still be in your Gemfile (as it´s matchers are used for cucumber)
+                                          but no RSpec directories and files will be generated
+
+  -h, [--help]                          # You are looking at it.
