@@ -5,7 +5,12 @@ require 'thor'
 
 require 'specimen/command/base'
 require 'specimen/command/base_group'
-require 'specimen/command/commons/common_test_runner'
+require 'specimen/command/test_runner'
+require 'specimen/command/exec_command_builder'
+require 'specimen/command/runner/path_runner'
+require 'specimen/command/runner/cukes_runner'
+require 'specimen/command/runner/exec_runner'
+require 'specimen/command/runner/specs_runner'
 
 require 'specimen/commands/cukes/cukes_command'
 require 'specimen/commands/exec/exec_command'
@@ -49,6 +54,7 @@ module Specimen
         show_command_help_and_exit! if command_help?
 
         command_perform!
+
         exit_ok
       rescue StandardError => e
         shell.say(e.message.red.bold)

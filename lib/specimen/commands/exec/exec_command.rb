@@ -2,15 +2,8 @@
 
 module Specimen
   module Command
-    class ExecCommand < CommonTestRunner
+    class ExecCommand < ExecRunner
       namespace :exec
-
-      argument :profile, default: ''
-
-      no_commands do
-        def perform
-        end
-      end
     end
   end
 end
