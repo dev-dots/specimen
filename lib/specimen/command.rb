@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'colorize'
+require 'thor'
 
 require 'specimen/command/base'
 require 'specimen/command/base_group'
@@ -46,10 +47,8 @@ module Specimen
 
         show_gem_help_and_exit! if gem_help?
         show_command_help_and_exit! if command_help?
-        binding.pry
 
         command_perform!
-
         exit_ok
       rescue StandardError => e
         shell.say(e.message.red.bold)

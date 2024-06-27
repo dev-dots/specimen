@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
-require 'thor'
-
 module Specimen
   module Command
     class BaseGroup < Thor::Group
       include Thor::Actions
 
       class << self
-        def source_root
-          File.dirname(__FILE__)
-        end
-
         def exit_on_failure?
           false
         end

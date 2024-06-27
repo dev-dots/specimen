@@ -6,18 +6,12 @@ module Specimen
       include Thor::Actions
 
       class << self
-        def source_root
-          File.dirname(__FILE__)
-        end
-
         def exit_on_failure?
           false
         end
       end
 
       no_commands do
-        def perform(*) end
-
         def usage_path
           find_in_source_paths('USAGE')
         rescue Thor::Error
