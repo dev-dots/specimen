@@ -11,7 +11,7 @@ module Specimen
         .rubocop.yml
         Gemfile
         README.md
-        specimen.yml
+        config/specimen.yml
       ].freeze
 
       #  argument :config

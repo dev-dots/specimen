@@ -8,7 +8,7 @@ module Specimen
       TEMPLATES = %w[
         spec/examples/example_spec.rb
         spec/spec_helper.rb
-        .rspec
+        config/.rspec
       ].freeze
 
       def execute!
