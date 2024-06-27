@@ -2,7 +2,6 @@
 
 require 'active_support'
 require 'colorize'
-require 'pry'
 
 # require Ruby extensions
 require 'specimen/extensions/ruby/hash'
@@ -13,9 +12,6 @@ require 'specimen/version'
 
 module Specimen
   extend ActiveSupport::Autoload
-
-  autoload :Config
-  autoload :Runtime
 
   class << self
     attr_accessor :runtime
