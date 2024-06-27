@@ -1,0 +1,14 @@
+Usage:
+  specimen COMMAND [options]
+
+You must specify a command:
+
+  init         Initialize a new specimen project
+  cukes        Run Cucumber tests (WIP)
+  specs        Run RSpec tests (WIP)
+  exec         Run tests via a config file (WIP)
+
+  -v|--version Show specimen version
+  -h|--help    You are looking at it
+
+All commands can be run with -h (or --help) for more information.

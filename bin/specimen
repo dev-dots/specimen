@@ -5,4 +5,3 @@ lib_path = "#{File.expand_path('..', __dir__)}/lib"
 $LOAD_PATH.unshift(lib_path) unless $LOAD_PATH.include?(lib_path)
 
 require 'specimen/cli'
-Specimen::CLI.start!(ARGV.dup)

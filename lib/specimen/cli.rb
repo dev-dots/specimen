@@ -1,25 +1,11 @@
 # frozen_string_literal: true
 
 require 'specimen'
-require 'specimen/cli/default_command'
 
-module Specimen
-  module CLI
-    class << self
-      def start!(args = ARGV)
-        command = args.shift
+config = {
+  verbose: ENV.key?('VERBOSE'),
+  strict: ENV.key?('STRICT'),
+  log_level: ENV.key?('LOG_LEVEL') ? ENV.fetch('LOG_LEVEL').to_sym : :info
+}
 
-        case command
-        when '--version', '-v'
-          show_version
-        else
-          DefaultCommand.start(ARGV.dup)
-        end
-      end
-
-      def show_version
-        puts(Specimen::VERSION::STRING)
-      end
-    end
-  end
-end
+Specimen::Command.execute!(ARGV.dup, config)

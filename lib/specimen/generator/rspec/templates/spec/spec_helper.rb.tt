@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+# require rubygems
+require 'pry'
+
+RSpec.configure do |config|
+  # generic base config for each example
+  config.before(:example) do
+    p 'always running'
+  end
+end
+
+at_exit do
+  p 'bye bye'
+end

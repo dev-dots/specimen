@@ -8,8 +8,8 @@ module Specimen
   module VERSION
     MAJOR = 0
     MINOR = 0
-    TINY  = 1
-    PRE   = 'alpha.b'
+    TINY  = 2
+    PRE   = 'alpha'
 
     STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
   end

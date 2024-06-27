@@ -1,0 +1,38 @@
+default: &default
+  threads: 1
+  env:
+    - FOO='123'
+
+cucumber: &cucumber
+  framework: cucumber
+  profiles: []
+  options: &options
+    - --publish-quiet
+    - --format pretty
+    - --format html --out tmp/cucumber_result.html
+  env:
+    - FOO='123'
+    - BAZ='something'
+
+rspec: &rspec
+  framework: rspec
+  options:
+    - --options config/.rspec
+    - --format progress
+    - --format documentation
+    - --format html --out tmp/rspec_result.html
+  env:
+    - FOO='123'
+    - BAZ='something'
+
+ci_specs:
+  <<: *rspec
+  env:
+    - CI='1'
+
+ci_cukes:
+  <<: *cucumber
+  env:
+    - CI='1'
+  profiles:
+    - regression
