@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 1.64.1'
   # rubocop:enable Gemspec/DevelopmentDependencies
 
-  s.files = Dir['*.md', 'bin/*', 'lib/**/*.rb', 'VERSION', 'lib/**/*.tt']
+  s.files = Dir['*.md', 'bin/*', 'lib/**/*.rb', 'VERSION', 'lib/**/*.tt', 'lib/**/**/.*.tt', 'lib/**/USAGE']
   s.require_path = 'lib'
   s.executables = ['specimen']
 end

@@ -2,6 +2,7 @@
 
 require 'active_support'
 require 'colorize'
+require 'pathname'
 
 # require Ruby extensions
 require 'specimen/extensions/ruby/hash'
@@ -15,5 +16,9 @@ module Specimen
 
   class << self
     attr_accessor :runtime
+
+    def init_wd_path
+      @init_wd_path ||= Pathname.getwd
+    end
   end
 end
