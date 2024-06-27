@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'psych'
-
 module Specimen
   module Runtime
     class YmlParser
