@@ -18,21 +18,21 @@ Gem::Specification.new do |s|
 
   s.metadata = {
     'bug_tracker_uri' => "#{homepage}/issues",
-    'hompage_uri' => homepage,
+    'homepage_uri' => homepage,
     'source_code_uri' => homepage,
     'rubygems_mfa_required' => 'true'
   }
 
   s.add_dependency 'activesupport', '~> 7.1'
+  s.add_dependency 'colorize', '~> 1.1'
+  s.add_dependency 'dotenv', '~> 3.1'
   s.add_dependency 'thor', '~> 1.3'
-  s.add_dependency 'dotenv'
-  s.add_dependency 'colorize'
 
   # rubocop:disable Gemspec/DevelopmentDependencies
-  s.add_development_dependency 'cucumber'
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'cucumber', '~> 9.2'
   s.add_development_dependency 'pry', '~> 0.14.2'
   s.add_development_dependency 'rake', '~> 13.2.1'
+  s.add_development_dependency 'rspec', '~> 3.13'
   s.add_development_dependency 'rubocop', '~> 1.64.1'
   # rubocop:enable Gemspec/DevelopmentDependencies
 
