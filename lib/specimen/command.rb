@@ -27,8 +27,9 @@ module Specimen
     autoload :Base
     autoload :BaseGroup
 
-    HELP_MAPPINGS = %w[-h -? --help].to_set
     COMMAND_MAPPINGS = %w[cukes exec init specs generate test].to_set
+    HELP_MAPPINGS = %w[-h -? --help].to_set
+    VERSION_MAPPINGS = %w[-v --version].to_set
 
     class << self
       attr_reader :args, :config, :exec_config
@@ -51,6 +52,7 @@ module Specimen
         raise InvalidCommandError, "'#{command_arg}' is not a valid specimen command!" unless valid_command?
 
         show_gem_help_and_exit! if gem_help?
+        show_gem_version_and_exit! if show_version?
         show_command_help_and_exit! if command_help?
 
         command_perform!
@@ -75,6 +77,12 @@ module Specimen
 
       def show_command_help_and_exit!
         display_command_help
+
+        exit_ok
+      end
+
+      def show_gem_version_and_exit!
+        shell.say("specimen version: #{Specimen.gem_version.to_s.bold}")
 
         exit_ok
       end
@@ -161,7 +169,13 @@ module Specimen
       end
 
       def valid_command?
-        command? || gem_help?
+        command? || gem_help? || show_version?
+      end
+
+      def show_version?
+        return false if command_arg.nil?
+
+        VERSION_MAPPINGS.include?(command_arg)
       end
 
       private
