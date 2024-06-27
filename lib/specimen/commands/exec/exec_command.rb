@@ -9,8 +9,6 @@ module Specimen
 
       no_commands do
         def perform
-          binding.pry
-
         end
       end
     end

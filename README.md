@@ -8,36 +8,77 @@ will help me with:
 - provide a Rails like templating approach in terms of _convention over configuration_ to provide a maintainable base for
   API or UI tests using RSpec and/or Cucumber.
 
-
-**Beware**
-
-At the point of writing the README and setting the repo to public, the gem does not do much yet so the current functionality
-is minimal, not optimized and not tested :). Hopefully that will change in the future.
+## specimen commands
 
 ```shell
-# install Specimen gem
-$> gem install specimen
-
-# creates a new project relative to the current working directory. Will ask for a project name.
-$> specimen init
-
-# creates a new project 'foobar' relative to the current working directory.
-# Inside /foobar you will find the default dir structures for Cucumber and RSpec tests and a few more files
-$> specimen init -n foobar
-
-# look at the command help
-$> specimen help init
+❯ specimen
 Usage:
-  specimen init
+  specimen COMMAND [options]
 
-Options:
-  --name, -n, [--project-name=PROJECT_NAME]
-              [--api-only], [--no-api-only], [--skip-api-only]  # Default: false  
-              [--cucumber], [--no-cucumber], [--skip-cucumber]  # Default: true
+You must specify a command:
+
+  init         Initialize a new specimen project
+  cukes        Run Cucumber tests (WIP)
+  specs        Run RSpec tests (WIP)
+  exec         Run tests via a config file (WIP)
+
+All commands can be run with -h (or --help) for more information.
 ```
 
+### specimen init
+
+```shell
+❯ specimen init -h
+Usage:
+  specimen init --name=NAME [options]   # Create a new specimen project which will generate following dirs and files
+
+                                          * default directories /config, /lib, /tmp
+                                          * default directories (/features/..) and files for cucumber unless --skip-cucumber
+                                          * default directories (/spec/..) and files for RSpec unless --skip-rspec
+                                          * root path files:
+                                            * .gemrc
+                                            * .gitignore
+                                            * .rspec (unless --skip-rspec)
+                                            * .rubocop.yml
+                                            * cucumber.yml (unless --skip-cucumber)
+                                            * Gemfile (based on the used options)
+                                            * README.md
+                                            * specimen.yml (default configuration file for the specimen gem
+
+Options:
+  -n, [--name=NAME]                     # required: true
+                                          The name of your project and installation path relative to your current PWD
+
+      [--ui-driver=UI_DRIVER]           # Default: 'watir'
+                                          Valid options are:
+                                            * watir
+                                            * selenium
+                                            * selenium-webdriver
+
+      [--skip-ui]                       # Default: false
+                                          Don´t add selenium or watir gem to your Gemfile
+
+      [--skip-cucumber]                 # Default: false
+                                          No cucumber gems will be added to your Gemfile.
+                                          Creation of cucumber directories and files will be skipped.
+
+      [--skip-rspec]                    # Default: false
+                                          RSpec will still be in your Gemfile (as it´s matchers are used for cucumber)
+                                          but no RSpec directories and files will be generated
+```
+
+### specimen cukes
+
+TBD
+
+### specimen specs
+
+TBD
+
+### specimen exec
+
+TBD
 
 ### Known issues
 
 - tests are missing
-- generated Gemfile contains Watir and Selenium webdriver, it should be only one of them.
