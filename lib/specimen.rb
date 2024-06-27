@@ -3,6 +3,7 @@
 require 'active_support'
 require 'colorize'
 require 'pathname'
+require 'psych'
 
 # require Ruby extensions
 require 'specimen/extensions/ruby/hash'

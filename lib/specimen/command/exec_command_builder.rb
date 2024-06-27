@@ -41,7 +41,5 @@ module Specimen
         command_options.map(&:to_s).join(' ')
       end
     end
-
-
   end
 end

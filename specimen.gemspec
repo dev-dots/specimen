@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '~> 7.1'
   s.add_dependency 'colorize', '~> 1.1'
   s.add_dependency 'dotenv', '~> 3.1'
+  s.add_dependency 'psych', '~> 5.1'
   s.add_dependency 'thor', '~> 1.3'
 
   # rubocop:disable Gemspec/DevelopmentDependencies

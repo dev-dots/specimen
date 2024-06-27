@@ -14,8 +14,6 @@ module Specimen
         config/specimen.yml
       ].freeze
 
-      #  argument :config
-
       def execute!
         perform
       end

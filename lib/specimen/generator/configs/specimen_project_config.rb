@@ -11,7 +11,7 @@ module Specimen
       end
 
       GEM_LIST = %w[
-        activesupport dotenv ffaker rest-client thor uuid
+        specimen ffaker rest-client uuid
         cucumber cuke_modeler parallel_tests rspec
         selenium-webdriver watir
         debug pry rubocop
