@@ -13,6 +13,7 @@ require 'specimen/command/runner/exec_runner'
 require 'specimen/command/runner/specs_runner'
 
 require 'specimen/commands/cukes/cukes_command'
+require 'specimen/commands/encrypted_configuration/encrypted_configuration_command'
 require 'specimen/commands/exec/exec_command'
 require 'specimen/commands/gem_help/gem_help_command'
 require 'specimen/commands/init/init_command'
@@ -27,7 +28,7 @@ module Specimen
     autoload :Base
     autoload :BaseGroup
 
-    COMMAND_MAPPINGS = %w[cukes exec init specs generate test].to_set
+    COMMAND_MAPPINGS = %w[cukes enc exec init specs generate test].to_set
     HELP_MAPPINGS = %w[-h -? --help].to_set
     VERSION_MAPPINGS = %w[-v --version].to_set
 
@@ -63,7 +64,7 @@ module Specimen
 
         if exec_config[:verbose]
           shell.say(e.class.to_s.red.bold)
-          shell.say(e.backtrace&.join("\n").red)
+          shell.say(e.backtrace.join("\n").red)
         end
 
         exit_specimen_failed
@@ -114,6 +115,7 @@ module Specimen
       def command
         @command ||= {
           cukes: CukesCommand,
+          enc: EncryptedConfigurationCommand,
           exec: ExecCommand,
           gem_help: GemHelpCommand,
           init: InitCommand,
@@ -176,6 +178,14 @@ module Specimen
         return false if command_arg.nil?
 
         VERSION_MAPPINGS.include?(command_arg)
+      end
+
+      def base_command?
+        command.ancestors.include?(Specimen::Command::Base)
+      end
+
+      def base_group_command?
+        command.ancestors.include?(Specimen::Command::BaseGroup)
       end
 
       private
