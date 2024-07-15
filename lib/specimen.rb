@@ -13,13 +13,17 @@ require 'specimen/runtime'
 require 'specimen/version'
 
 module Specimen
-  extend ActiveSupport::Autoload
-
   class << self
-    attr_accessor :runtime
+    attr_accessor :enc_config
 
-    def init_wd_path
-      @init_wd_path ||= Pathname.getwd
+    def runtime
+      @runtime ||= Specimen::Runtime.new
+    end
+
+    def run_testrunner_hooks!
+      runtime.run_load_profile_hook!
+      runtime.run_env_file_hook!
+      runtime.run_decrypt_enc_configs_hook!
     end
   end
 end
