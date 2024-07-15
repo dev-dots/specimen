@@ -13,16 +13,11 @@ Options:
 
                                           Examples:
 
-                                          # create/update/validate example.yml.enc in config/enc
+                                          # create/update/validate config/enc/example.yml.enc
                                           $ specimen enc create/update/validate --name example
 
-  -d, [--config-dir=CONFIG_DIR]            # default: ''
-                                          A directory relative in config/enc
-
-                                          Examples:
-
-                                          # create/update/validate example.yml.enc in config/enc/foobar
-                                          $ specimen enc create/update/validate --name example --config-dir foobar
+                                          # create/update/validate config/enc/foobar/example.yml.enc
+                                          $ specimen enc create/update/validate --name foobar/example
 
   -e, [--editor=EDITOR]                   # default: 'vi'
                                           Is only used with the update command
@@ -30,13 +25,13 @@ Options:
                                           If you have the variable EDITOR set on your shell, it will override the
                                           default editor 'vi'
 
-                                          Examples
+                                          Examples:
 
                                           # Uses EDITOR variable if set, otherwise 'vi' is used
                                           $ specimen update --name example
 
-                                          # Uses 'nano'
+                                          # Uses 'nano' as EDITOR
                                           $ EDITOR='nano' specimen update --name example
 
-                                          # Uses 'nano'
-                                          $ specimen update --name example -e nano
+                                          # Uses 'nano' as EDITOR
+                                          $ specimen update --name example --editor nano

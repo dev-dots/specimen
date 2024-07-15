@@ -11,29 +11,28 @@ module Specimen
       class MissingKeyFileError < StandardError; end
       class MissingKeyFileError < StandardError; end
 
-      attr_accessor :name, :config_dir
+      attr_accessor :name
       attr_reader :enc_path, :env_key, :config_path, :key_path
 
-      def self.create(name:, config_dir:)
-        new(name:, config_dir:).create_encrypted_config!
+      def self.create(name:)
+        new(name:).create_encrypted_config!
       end
 
-      def self.update(name:, config_dir:)
-        new(name:, config_dir:).update_encrypted_config!
+      def self.update(name:)
+        new(name:).update_encrypted_config!
       end
 
-      def self.validate(name:, config_dir:)
-        new(name:, config_dir:).validate_encrypted_config!
+      def self.validate(name:)
+        new(name:).validate_encrypted_config!
       end
 
-      def self.decrypt(name:, config_dir:, env_key: 'MASTER_KEY')
-        new(name:, config_dir:, env_key:).decrypt_config!
+      def self.decrypt(name:, env_key: 'MASTER_KEY')
+        new(name:, env_key:).decrypt_config!
       end
 
-      def initialize(name:, config_dir:, env_key: '')
+      def initialize(name:, env_key: '')
         @name = name
-        @config_dir = config_dir
-        @enc_path = EncryptedConfigPath.new(name:, config_dir:)
+        @enc_path = EncryptedConfigPath.new(name:)
         @config_path = @enc_path.full_enc_path
         @key_path = @enc_path.full_key_path
         @env_key = env_key

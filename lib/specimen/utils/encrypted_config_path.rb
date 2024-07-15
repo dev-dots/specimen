@@ -5,38 +5,41 @@ module Specimen
     class EncryptedConfigPath
       ENC_DIRECTORY = 'config/enc'
 
-      attr_reader :name, :config_dir
+      attr_reader :name, :runtime
 
-      def initialize(name:, config_dir: '')
+      def initialize(name:)
         @name = name
-        @config_dir = config_dir
-      end
-
-      def yml_file_name
-        "#{name}.yml.enc"
-      end
-
-      def key_file_name
-        "#{name}.key"
+        @runtime = Specimen.runtime
       end
 
       def config_base_dir
-        @config_base_dir ||= Pathname.new("#{Specimen.init_wd_path}/#{ENC_DIRECTORY}")
+        @config_base_dir ||= Pathname.new("#{runtime.wd_path}/#{ENC_DIRECTORY}")
       end
 
       def enc_dir
-        return @enc_dir if @enc_dir
-        return @enc_dir = config_base_dir if config_dir.empty?
+        return Pathname.new(config_base_dir.to_path) if config_dir.empty?
 
-        @enc_dir = Pathname.new("#{config_base_dir}/#{config_dir}")
+        Pathname.new("#{config_base_dir}/#{config_dir}")
+      end
+
+      def config_file_name
+        "#{split_name.last}.yml.enc"
+      end
+
+      def config_dir
+        split_name[0...-1].join('/')
+      end
+
+      def split_name
+        name.split('/')
       end
 
       def full_enc_path
-        @full_enc_path ||= Pathname.new("#{enc_dir}/#{yml_file_name}")
+        @full_enc_path ||= Pathname.new("#{enc_dir}/#{config_file_name}")
       end
 
       def full_key_path
-        @full_key_path ||= Pathname.new("#{enc_dir}/#{key_file_name}")
+        @full_key_path ||= Pathname.new("#{enc_dir}/#{config_file_name.gsub('.yml.enc', '.key')}")
       end
 
       def config_exist?
