@@ -35,7 +35,7 @@ module Specimen
       def config
         @config ||= {
           project_name: project_name,
-          root_path: "#{Specimen.init_wd_path.to_path}/#{project_name}",
+          root_path: "#{Specimen.runtime.wd_path.to_path}/#{project_name}",
           gems: project_gems,
           skip_ui: skip_ui?,
           cucumber: !skip_cucumber?,
