@@ -10,47 +10,40 @@ module Specimen
         end
       end
 
-      class_option :config_file, aliases: %w[-C --config], type: :string, default: 'specimen.yml'
+      class_option :debug, type: :boolean, default: false
+      class_option :verbose, type: :boolean, default: false
 
       no_commands do
         def perform
-          runtime
+          runtime.set_testrunner!(specimen_config, specimen_profile, self)
+
+          inside runtime.wd_path do
+            ENV['SPECIMEN_CONFIG_NAME'] = runtime.specimen_config
+            ENV['SPECIMEN_PROFILE_NAME'] = runtime.specimen_profile
+            
+            ENV['DEBUG'] = 'true' if options[:debug]
+            ENV['VERBOSE'] = 'true' if options[:verbose]
+
+            @success = run(exec_cmd)
+          end
+
+          @success == true ? exit(0) : exit(1)
         end
 
         def runtime
-          return @runtime if @runtime
-
-          runtime = Runtime.start!(self)
-          Specimen.runtime = runtime
-          @runtime = runtime
+          Specimen.runtime
         end
 
-        def framework
-          nil
+        def specimen_config
+          options[:specimen_config]
         end
 
-        def profile
-          options[:profile]
-        end
-
-        def profile?
-          !profile.nil?
-        end
-
-        def profile_config
-          runtime.profile_yml_data(profile_name)
-        end
-
-        def profile_name
-          profile? ? profile : nil
+        def specimen_profile
+          options[:specimen_profile]
         end
 
         def exec_cmd
-          ExecCommandBuilder.new(config: profile_config, framework:, tests_path:).build_cmd
-        end
-
-        def check_config_not_nil!
-          raise ProfileDataNilError.new(profile_name, runtime.yml_name) if profile? && profile_config.nil?
+          ExecCommandBuilder.new(config: runtime.profile_data, framework: runtime.framework, tests_path:).build_cmd
         end
       end
     end

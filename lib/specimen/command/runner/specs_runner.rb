@@ -3,23 +3,8 @@
 module Specimen
   module Command
     class SpecsRunner < PathRunner
-      no_commands do
-        def perform
-          super
-          check_config_not_nil!
-          inside runtime.work_dir do
-            run(exec_cmd)
-          end
-        end
-
-        def framework
-          profile_config['framework'] || 'rspec'
-        end
-
-        def profile_name
-          profile? ? profile : 'rspec'
-        end
-      end
+      class_option :specimen_config, aliases: %w[--sc], type: :string, default: 'specimen.specs.yml'
+      class_option :specimen_profile, aliases: %w[--sp], type: :string, default: 'rspec'
     end
   end
 end
