@@ -1,9 +1,11 @@
 Feature: Add numbers example feature
 
+  @pass
   Scenario:
     Given I add 1 and 1
     Then the result should be 2
 
+  @fail
   Scenario:
-    Given I add 1 and 3
+    Given I add 1 and 1
     Then the result should be 3

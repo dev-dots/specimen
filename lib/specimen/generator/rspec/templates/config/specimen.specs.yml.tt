@@ -1,0 +1,20 @@
+default_opts: &default_opts
+  - --options config/.rspec
+  - --format progress
+  - --format documentation
+  - --format html --out tmp/rspec_result.html
+
+rspec: &rspec
+  options: *default_opts
+
+examples:
+  <<: *rspec
+  env_file: .example.env
+  enc_configs:
+    - name: example
+      env_key: MASTER_KEY
+
+ci_specs:
+  <<: *rspec
+  env:
+    - CI='1'
