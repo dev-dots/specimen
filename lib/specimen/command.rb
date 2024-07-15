@@ -9,12 +9,10 @@ require 'specimen/command/test_runner'
 require 'specimen/command/exec_command_builder'
 require 'specimen/command/runner/path_runner'
 require 'specimen/command/runner/cukes_runner'
-require 'specimen/command/runner/exec_runner'
 require 'specimen/command/runner/specs_runner'
 
 require 'specimen/commands/cukes/cukes_command'
 require 'specimen/commands/encrypted_configuration/encrypted_configuration_command'
-require 'specimen/commands/exec/exec_command'
 require 'specimen/commands/gem_help/gem_help_command'
 require 'specimen/commands/init/init_command'
 require 'specimen/commands/specs/specs_command'
@@ -28,7 +26,7 @@ module Specimen
     autoload :Base
     autoload :BaseGroup
 
-    COMMAND_MAPPINGS = %w[cukes enc exec init specs generate test].to_set
+    COMMAND_MAPPINGS = %w[cukes enc init specs generate].to_set
     HELP_MAPPINGS = %w[-h -? --help].to_set
     VERSION_MAPPINGS = %w[-v --version].to_set
 
@@ -116,7 +114,6 @@ module Specimen
         @command ||= {
           cukes: CukesCommand,
           enc: EncryptedConfigurationCommand,
-          exec: ExecCommand,
           gem_help: GemHelpCommand,
           init: InitCommand,
           specs: SpecsCommand
