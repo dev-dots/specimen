@@ -25,5 +25,9 @@ module Specimen
       runtime.run_env_file_hook!
       runtime.run_decrypt_enc_configs_hook!
     end
+
+    def shell
+      runtime&.command.shell
+    end
   end
 end
