@@ -69,7 +69,7 @@ module Specimen
         warn "env key '#{env_key}' defined but not set!" if env_key && !ENV.key?(env_key)
         env_key.nil? ? env_key = '' : env_key
 
-        config = Specimen::Utils::EncryptedConfiguration.decrypt(name:, config_dir: '', env_key:)
+        config = Specimen::Utils::EncryptedConfiguration.decrypt(name:, env_key:)
         encrypted_config.merge!(config)
       end
 
