@@ -1,6 +1,5 @@
 default_opts: &default_opts
   - --options config/.rspec
-  - --format progress
   - --format documentation
   - --format html --out tmp/rspec_result.html
 

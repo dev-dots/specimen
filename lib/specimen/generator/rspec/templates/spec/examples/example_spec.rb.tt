@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Example specs' do
-  context 'run example tests' do
+RSpec.describe 'Add numbers specs' do
+  context 'add 1 + 1', add_numbers: true do
     before(:example) do
-      @foo = '123'
+      @result = 1 + 1
     end
 
-    it 'passes' do
-      expect(@foo).to eq '123'
+    it 'passes', pass: true do
+      expect(@result).to eq 2
+    end
+
+    it 'fails due to not being an integer', fail: true do
+      expect(@result).to eq '2'
     end
   end
 end
