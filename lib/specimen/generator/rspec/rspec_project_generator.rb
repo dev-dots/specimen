@@ -9,6 +9,7 @@ module Specimen
         spec/examples/example_spec.rb
         spec/spec_helper.rb
         config/.rspec
+        config/specimen.specs.yml
       ].freeze
 
       def execute!

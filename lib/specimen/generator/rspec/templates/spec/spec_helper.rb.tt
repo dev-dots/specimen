@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-# require rubygems
-require 'pry'
+require 'specimen'
 
 RSpec.configure do |config|
-  # generic base config for each example
-  config.before(:example) do
-    p 'always running'
+  config.before(:suite) do
+    Specimen.run_testrunner_hooks!
+  end
+
+  config.before(:all) do
+    @enc_config = Specimen.enc_config
   end
 end
 

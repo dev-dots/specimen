@@ -5,67 +5,75 @@ will help me with:
 
 - setting up a new test automation project, including README, Gemfile, rubocop.yml, etc...
 - run Cucumber and RSpec tests with configs that make sense (e.g. parallel execution, reporting)
-- provide a Rails like templating approach in terms of _convention over configuration_ to provide a maintainable base for
+- provide a Rails like templating approach in terms of _convention over configuration_ to provide a maintainable base
+  for
   API or UI tests using RSpec and/or Cucumber.
+
+## How to start?
+
+To get familiar with specimen, you can simply create initialize a new project by running the following command.
+
+```shell
+specimen init --name example-project
+```
+
+This will do the following things for you
+
+- create a new directory `/example-project` relative to your current working directory
+- create initial files for running Cucumber or RSpec tests as well as project root files such as a README.md, Gemfile,
+  etc...
+- creates a new encrypted configuration in `/example-project/config/enc/example.yml.enc`
+- creates a new key file in `/example-project/config/enc/example.key` containing the key value to decrypt the
+  configuration which is required when you need to update the encrypted config.
+- creates a .env-file `/example-project/.example.env` containing the `MASTER_KEY` variable and the key value to decrypt
+  the config
+
+Now you can switch to the newly created directory `/example-project` and run e.g. the following commands
+
+```shell
+# install Rubygems first
+bundle install
+
+# run Cucumber tests without additional options
+specimen cukes
+
+# run Cucumber tests tagged with @pass
+specimen cukes -t @pass
+
+# run RSpec tests without additional options
+specimen specs
+
+# run RSpec tests tagged with pass: true
+specimen specs -t pass
+
+# run Cucumber|RSpec tests using the example specimen-profile
+# The 'examples' profile will automatically load and decrypt the 
+# encrypted configuration /config/enc/example.yml.enc during execution.
+specimen cukes|specs --sp|--specimen-profile examples
+```
 
 ## specimen commands
 
 ```shell
-❯ specimen
 Usage:
   specimen COMMAND [options]
 
 You must specify a command:
 
   init         Initialize a new specimen project
-  cukes        Run Cucumber tests (WIP)
-  specs        Run RSpec tests (WIP)
-  exec         Run tests via a config file (WIP)
+  cukes        Run Cucumber tests
+  specs        Run RSpec tests
+  enc          Create or update encrypted configurations
+
+  -v|--version Show specimen version
+  -h|--help    You are looking at it
 
 All commands can be run with -h (or --help) for more information.
 ```
 
 ### specimen init
 
-```shell
-❯ specimen init -h
-Usage:
-  specimen init --name=NAME [options]   # Create a new specimen project which will generate following dirs and files
-
-                                          * default directories /config, /lib, /tmp
-                                          * default directories (/features/..) and files for cucumber unless --skip-cucumber
-                                          * default directories (/spec/..) and files for RSpec unless --skip-rspec
-                                          * root path files:
-                                            * .gemrc
-                                            * .gitignore
-                                            * .rspec (unless --skip-rspec)
-                                            * .rubocop.yml
-                                            * cucumber.yml (unless --skip-cucumber)
-                                            * Gemfile (based on the used options)
-                                            * README.md
-                                            * specimen.yml (default configuration file for the specimen gem
-
-Options:
-  -n, [--name=NAME]                     # required: true
-                                          The name of your project and installation path relative to your current PWD
-
-      [--ui-driver=UI_DRIVER]           # Default: 'watir'
-                                          Valid options are:
-                                            * watir
-                                            * selenium
-                                            * selenium-webdriver
-
-      [--skip-ui]                       # Default: false
-                                          Don´t add selenium or watir gem to your Gemfile
-
-      [--skip-cucumber]                 # Default: false
-                                          No cucumber gems will be added to your Gemfile.
-                                          Creation of cucumber directories and files will be skipped.
-
-      [--skip-rspec]                    # Default: false
-                                          RSpec will still be in your Gemfile (as it´s matchers are used for cucumber)
-                                          but no RSpec directories and files will be generated
-```
+TBD
 
 ### specimen cukes
 
@@ -75,10 +83,9 @@ TBD
 
 TBD
 
-### specimen exec
-
-TBD
-
 ### Known issues
 
 - tests are missing
+- tests do not run in parallel (yet)
+- documentation about allowed options in config-yml´s
+- templates for docker, Selenium, Watir and Playwright

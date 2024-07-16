@@ -3,6 +3,7 @@ default: &default
   env:
     - FOO='123'
 
+<% if data[:cucumber] -%>
 cucumber: &cucumber
   framework: cucumber
   profiles: []
@@ -14,6 +15,15 @@ cucumber: &cucumber
     - FOO='123'
     - BAZ='something'
 
+ci_cukes:
+  <<: *cucumber
+  env:
+    - CI='1'
+  profiles:
+    - regression
+<% end -%>
+
+<% if data[:rspec] -%>
 rspec: &rspec
   framework: rspec
   options:
@@ -29,10 +39,4 @@ ci_specs:
   <<: *rspec
   env:
     - CI='1'
-
-ci_cukes:
-  <<: *cucumber
-  env:
-    - CI='1'
-  profiles:
-    - regression
+<% end -%>

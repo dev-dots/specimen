@@ -7,8 +7,10 @@ module Specimen
       TEMPLATES_DIR = 'cucumber/templates'
       TEMPLATES = %w[
         features/examples/add_numbers.feature
+        features/step_definitions/examples/example_steps.rb
         features/support/env.rb
         config/cucumber.yml
+        config/specimen.cukes.yml
       ].freeze
 
       def execute!

@@ -1,0 +1,37 @@
+Usage:
+  specimen enc
+
+Commands:
+  specimen enc create          # create a new encrypted configuration
+  specimen enc update          # update an existing encrypted configuration
+  specimen enc validate        # validates if encrypted configuration is YAML conform
+  specimen enc -h|--help       # You are looking at it
+
+Options:
+  -n, [--name=NAME]                       # required: true
+                                          The name of the encrypted config.
+
+                                          Examples:
+
+                                          # create/update/validate config/enc/example.yml.enc
+                                          $ specimen enc create/update/validate --name example
+
+                                          # create/update/validate config/enc/foobar/example.yml.enc
+                                          $ specimen enc create/update/validate --name foobar/example
+
+  -e, [--editor=EDITOR]                   # default: 'vi'
+                                          Is only used with the update command
+
+                                          If you have the variable EDITOR set on your shell, it will override the
+                                          default editor 'vi'
+
+                                          Examples:
+
+                                          # Uses EDITOR variable if set, otherwise 'vi' is used
+                                          $ specimen update --name example
+
+                                          # Uses 'nano' as EDITOR
+                                          $ EDITOR='nano' specimen update --name example
+
+                                          # Uses 'nano' as EDITOR
+                                          $ specimen update --name example --editor nano

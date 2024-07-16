@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+Given('I add {int} and {int}') do |int, int2|
+  @result = int + int2
+end
+
+Then('the result should be {int}') do |int|
+  expect(@result).to eq int
+end

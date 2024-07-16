@@ -1,1 +1,4 @@
-default: --require features/support/env.rb
+default: --profile entry_point --profile step_definitions
+
+entry_point: --require features/support/env.rb
+step_definitions: --require features/step_definitions

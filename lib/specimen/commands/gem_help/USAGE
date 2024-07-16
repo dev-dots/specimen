@@ -4,9 +4,9 @@ Usage:
 You must specify a command:
 
   init         Initialize a new specimen project
-  cukes        Run Cucumber tests (WIP)
-  specs        Run RSpec tests (WIP)
-  exec         Run tests via a config file (WIP)
+  cukes        Run Cucumber tests
+  specs        Run RSpec tests
+  enc          Create or update encrypted configurations
 
   -v|--version Show specimen version
   -h|--help    You are looking at it

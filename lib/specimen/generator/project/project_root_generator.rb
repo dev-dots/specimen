@@ -11,7 +11,6 @@ module Specimen
         .rubocop.yml
         Gemfile
         README.md
-        config/specimen.yml
       ].freeze
 
       def execute!

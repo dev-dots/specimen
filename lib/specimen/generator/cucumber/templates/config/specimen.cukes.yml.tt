@@ -1,0 +1,22 @@
+default_opts: &default_opts
+  - --publish-quiet
+  - --format pretty
+  - --format html --out tmp/cucumber_result.html
+
+cucumber: &cucumber
+  profiles: []
+  options: *default_opts
+
+examples:
+  <<: *cucumber
+  env_file: .example.env
+  enc_configs:
+    - name: example
+      env_key: MASTER_KEY
+
+ci_cukes:
+  <<: *cucumber
+  env:
+    - CI='1'
+  profiles:
+    - regression
