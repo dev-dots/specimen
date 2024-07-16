@@ -10,6 +10,7 @@ module Specimen
         end
       end
 
+      class_option :tags, aliases: ['-t'], type: :string, repeatable: true, default: []
       class_option :debug, type: :boolean, default: false
       class_option :verbose, type: :boolean, default: false
 
@@ -20,7 +21,7 @@ module Specimen
           inside runtime.wd_path do
             ENV['SPECIMEN_CONFIG_NAME'] = runtime.specimen_config
             ENV['SPECIMEN_PROFILE_NAME'] = runtime.specimen_profile
-            
+
             ENV['DEBUG'] = 'true' if options[:debug]
             ENV['VERBOSE'] = 'true' if options[:verbose]
 
@@ -43,7 +44,7 @@ module Specimen
         end
 
         def exec_cmd
-          ExecCommandBuilder.new(config: runtime.profile_data, framework: runtime.framework, tests_path:).build_cmd
+          ExecCommandBuilder.build_exec_cmd!
         end
       end
     end
